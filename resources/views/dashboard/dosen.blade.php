@@ -22,8 +22,9 @@
             @if($kelas)
                 <div class="mb-4">
                     <h3 class="text-lg font-semibold">Class Information</h3>
-                    <p><strong>Class Name:</strong> {{ $kelas->name }}</p>
-                    <p><strong>Number of Students:</strong> {{ $kelas->mahasiswas->count() }}</p>
+                    <p><strong>Kelas :</strong> {{ $kelas->name }}</p>
+                    <p><strong>Mahasiswa saat ini :</strong> {{ $kelas->mahasiswas->count() }}</p>
+                    <p><strong>Jumlah Maksimal :</strong> {{ $kelas->jumlah }}</p>
                 </div>
             @else
                 <p class="text-gray-700 mb-4">Class information is not available.</p>
