@@ -1,0 +1,108 @@
+{{-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pendataan Mahasiswa</title>
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+</head>
+<body class="flex" x-data="{ showModal: false }">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white min-h-screen">
+        <div class="p-4 text-2xl font-bold">Pendataan</div>
+        <ul>
+            @if(Auth::user()->role === 'kaprodi')
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('dosen.index') }}">Manage Dosen</a></li>
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('kelas.index') }}">Manage Kelas</a></li>
+            @elseif(Auth::user()->role === 'dosen')
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('mahasiswa.index') }}">Manage Mahasiswa</a></li>
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('mahasiswa.edit-requests') }}">Edit Requests</a></li>
+            @elseif(Auth::user()->role === 'mahasiswa')
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('profile.index') }}">Profile</a></li>
+                <li class="p-4 hover:bg-gray-700"><a href="{{ route('profile.request-edit') }}">Request Edit</a></li>
+            @endif
+            <li class="p-4 hover:bg-gray-700">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 p-6">
+        @yield('content')
+    </div>
+
+</body>
+</html> --}}
+{{-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendataan Mahasiswa</title>
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+</head>
+<body class="flex bg-gray-100 min-h-screen">
+
+<!-- Burger Menu -->
+<button class="sidebar-toggle fixed top-4 left-4 z-40 p-2 bg-gray-800 rounded-md text-white md:hidden" id="sidebar-toggle">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+</button>
+
+<!-- Sidebar -->
+<div class="sidebar fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+    <div class="flex items-center p-4">
+        <img src="polines.png" alt="Logo" class="w-10 h-10 mr-2"> <!-- Adjust size as needed -->
+        <div class="text-2xl font-bold">SIDAK</div>
+    </div>
+    <ul>
+        @if(Auth::user()->role === 'kaprodi')
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('dosen.index') }}">Manage Dosen</a></li>
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('kelas.index') }}">Manage Kelas</a></li>
+        @elseif(Auth::user()->role === 'dosen')
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('mahasiswa.index') }}">Manage Mahasiswa</a></li>
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('mahasiswa.edit-requests') }}">Edit Requests</a></li>
+        @elseif(Auth::user()->role === 'mahasiswa')
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('profile.index') }}">Profile</a></li>
+            <li class="p-4 hover:bg-gray-700"><a href="{{ route('profile.request-edit') }}">Request Edit</a></li>
+        @endif
+        <li class="p-4 hover:bg-gray-700">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="w-full text-left text-white">Logout</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="flex-1 p-6 transition-all duration-300 md:ml-64">
+        <h1 class="text-3xl font-bold mb-6">
+            @if(Auth::user()->role === 'kaprodi')
+                Welcome, Kaprodi {{ Auth::user()->name }}
+            @elseif(Auth::user()->role === 'dosen')
+                Welcome, Dosen {{ Auth::user()->name }}
+            @elseif(Auth::user()->role === 'mahasiswa')
+                Welcome, Mahasiswa {{ Auth::user()->name }}
+            @endif
+        </h1>
+        @yield('content')
+    </div>
+
+    <script>
+        // Toggle Sidebar
+        document.getElementById('sidebar-toggle').addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.getElementById('main-content');
+            sidebar.classList.toggle('-translate-x-full');
+            mainContent.classList.toggle('ml-64');
+        });
+    </script>
+</body>
+</html> --}}
